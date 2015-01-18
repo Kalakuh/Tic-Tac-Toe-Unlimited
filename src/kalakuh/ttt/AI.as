@@ -69,9 +69,7 @@ package kalakuh.ttt
 						bestPoints = new <Point>[new Point(parseInt(split[0]), parseInt(split[1]))];
 					}
 				}
-				//trace(key + ": value " + points[key] + ", priority " + priorities[key]);
 			}
-			//trace(highestPriority);
 			if (bestPoints.length != 0) {
 				return bestPoints[Math.floor(Math.random() * bestPoints.length)];
 			} else {

@@ -71,8 +71,6 @@ package kalakuh.ttt
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, mouseAction);
 			stage.addEventListener(MouseEvent.MOUSE_UP, mouseAction);
 			stage.addEventListener(MouseEvent.CLICK, onClick);
-			
-			startGame();
 		}
 		
 		public function startGame () : void {
@@ -86,6 +84,9 @@ package kalakuh.ttt
 			player1Turn = player1Starts;
 			player2Turn = !player1Starts;
 			player1Starts = !player1Starts;
+			
+			Main(parent).showTurn(player1Turn ? Mark.X : Mark.O);
+			
 			nextTurn();
 		}
 		
@@ -223,7 +224,8 @@ package kalakuh.ttt
 			gameWon = gameWon || checkWin(1, 0);
 			gameWon = gameWon || checkWin(1, -1);
 			if (!gameWon) {
-				turnTimer = new Timer(500, 1);
+				Main(parent).showTurn(!player1Turn ? Mark.X : Mark.O);
+				turnTimer = new Timer(1000, 1);
 				turnTimer.addEventListener(TimerEvent.TIMER_COMPLETE, nextTurn);
 				turnTimer.start();
 			} else {

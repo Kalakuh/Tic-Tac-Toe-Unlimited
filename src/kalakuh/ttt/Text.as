@@ -17,7 +17,7 @@ package kalakuh.ttt
 		
 		private var i : uint = 0;
 		
-		public function Text (scale : Number, textString : String, y : Number) : void {
+		public function Text (scale : Number, textString : String, y : Number, blink : Boolean) : void {
 			format = new TextFormat(font.fontName, 20, 0x000000, false, false, false, null, null, TextFormatAlign.CENTER);
 			text = new TextField();
 			
@@ -39,7 +39,9 @@ package kalakuh.ttt
 			
 			addChild(text);
 			
-			addEventListener(Event.ENTER_FRAME, update);
+			if (blink) {
+				addEventListener(Event.ENTER_FRAME, update);
+			}
 		}
 		
 		private function update (e : Event) : void {
