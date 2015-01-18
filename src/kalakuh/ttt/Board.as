@@ -17,6 +17,7 @@ package kalakuh.ttt
 		private static const P2AI : Boolean = true;
 		private var player1Turn : Boolean;
 		private var player2Turn : Boolean;
+		private var player1Starts : Boolean = true;
 		
 		private var grid : Sprite;
 		private static const SQUARE_WIDTH : Number = 20.0;
@@ -82,8 +83,9 @@ package kalakuh.ttt
 			marks.splice(0, marks.length);
 			
 			canPlay = true;
-			player1Turn = true;
-			player2Turn = false;
+			player1Turn = player1Starts;
+			player2Turn = !player1Starts;
+			player1Starts = !player1Starts;
 			nextTurn();
 		}
 		
