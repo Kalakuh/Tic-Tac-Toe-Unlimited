@@ -304,7 +304,8 @@ package kalakuh.ttt
 				Main(parent).showTurn(!player1Turn ? Mark.X : Mark.O);
 				turnTimer = new Timer(1000, 1);
 				turnTimer.addEventListener(TimerEvent.TIMER_COMPLETE, nextTurn);
-				turnTimer // make texts appear
+				turnTimer.start();
+			} else { // make texts appear
 				Main(parent).showTexts(marks[marks.length - 1].getType());
 			}
 		}
@@ -369,11 +370,10 @@ package kalakuh.ttt
 			if (found >= 5) {
 				for each (var m : Mark in marksOnLine) {
 					m.highlight();
-					return true:
 				}
 			}
 			
-			return false;
+			return found >= 5;
 		}
 	}
 	
