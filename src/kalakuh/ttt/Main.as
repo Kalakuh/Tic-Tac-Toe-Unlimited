@@ -59,13 +59,20 @@ package kalakuh.ttt
 			addEventListener(Event.ENTER_FRAME, updateAlpha);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		}
-		
+		/**
+		 * makes winner text appear, using updateAlpha function
+		 * @param	winner
+		 */
 		public function showTexts (winner : int) : void {
 			textAlpha = 1;
 			this.winner.setText(winner == Mark.X ? "YOU WON" : "AI WON");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		}
 		
+		/**
+		 * Starts a new game when the user presses space and the game has ended
+		 * @param	e
+		 */
 		private function onKeyPress (e : KeyboardEvent) : void {
 			if (e.keyCode == Keyboard.SPACE) {
 				instructionAlpha = 0;
@@ -75,15 +82,26 @@ package kalakuh.ttt
 			}
 		}
 		
+		/**
+		 * Shows "YOUR TURN" or "AI'S TURN" on the screen
+		 * @param	mark	Tells the function whose turn is next
+		 */
 		public function showTurn (mark : int) : void {
 			turnAlpha = 1;
 			turn.setText(mark == Mark.X ? "YOUR TURN" : "AI'S TURN");
 		}
 		
+		/**
+		 * Makes texts fade out using updateAlpha function
+		 */
 		public function hideTexts () : void {
 			textAlpha = 0;
 		}
 		
+		/**
+		 * Updates alpha values of texts and instructions
+		 * @param	e
+		 */
 		private function updateAlpha (e : Event) : void {
 			winner.alpha += (textAlpha - winner.alpha) / 10;
 			playAgain.alpha += (textAlpha - playAgain.alpha) / 10;

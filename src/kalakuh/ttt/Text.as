@@ -17,6 +17,13 @@ package kalakuh.ttt
 		
 		private var i : uint = 0;
 		
+		/**
+		 * 
+		 * @param	scale		scale of the text
+		 * @param	textString	the initial value of the textfield
+		 * @param	y			y position of the text
+		 * @param	blink		should the text fade in and out
+		 */
 		public function Text (scale : Number, textString : String, y : Number, blink : Boolean) : void {
 			format = new TextFormat(font.fontName, 20, 0x000000, false, false, false, null, null, TextFormatAlign.CENTER);
 			text = new TextField();
@@ -44,11 +51,19 @@ package kalakuh.ttt
 			}
 		}
 		
+		/**
+		 * Makes text fade in and out slowly using Math.sin function
+		 * @param	e
+		 */
 		private function update (e : Event) : void {
 			i += 3;
 			text.alpha = (Math.sin(Math.PI / 180 * i) / 4) + 0.60;
 		}
 		
+		/**
+		 * Changes the text of the textfield
+		 * @param	str		New text of the textfield
+		 */
 		public function setText (str : String) : void {
 			text.text = str;
 			text.setTextFormat(format);
