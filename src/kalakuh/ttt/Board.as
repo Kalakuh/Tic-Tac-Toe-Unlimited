@@ -306,7 +306,7 @@ package kalakuh.ttt
 				turnTimer.addEventListener(TimerEvent.TIMER_COMPLETE, nextTurn);
 				turnTimer.start();
 			} else { // make texts appear
-				Main(parent).showTexts(marks[marks.length - 1].getType());
+				Main(parent).showWinner(marks[marks.length - 1].getType());
 			}
 		}
 		

@@ -27,6 +27,8 @@ package kalakuh.ttt
 		
 		private var instructionAlpha : Number = 1;
 		
+		private var kongregate : Kongregate;
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -56,6 +58,9 @@ package kalakuh.ttt
 			
 			addChild(instructions);
 			
+			kongregate = new Kongregate();
+			addChild(kongregate);
+			
 			addEventListener(Event.ENTER_FRAME, updateAlpha);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		}
@@ -63,10 +68,11 @@ package kalakuh.ttt
 		 * makes winner text appear, using updateAlpha function
 		 * @param	winner
 		 */
-		public function showTexts (winner : int) : void {
+		public function showWinner (winner : int) : void {
 			textAlpha = 1;
 			this.winner.setText(winner == Mark.X ? "YOU WON" : "AI WON");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			kongregate.addWinningStats(winner);
 		}
 		
 		/**

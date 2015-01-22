@@ -82,11 +82,11 @@ package kalakuh.ttt
 						}
 						// set priority of the cell
 						if (!priorities[dirKey]) {
-							priorities[dirKey] = priority[n];
-							highestPriority = Math.max(highestPriority, priority[n]);
+							priorities[dirKey] = priority[n] == 4 && m.getType() == type ? 5 : priority[n];
+							highestPriority = Math.max(highestPriority, priority[n] == 4 && m.getType() == type ? 5: priority[n]);
 						} else {
-							priorities[dirKey] = Math.max(priority[n], priorities[dirKey]);
-							highestPriority = Math.max(highestPriority, priority[n]);
+							priorities[dirKey] = Math.max(priority[n] == 4 && m.getType() == type ? 5 : priority[n], priorities[dirKey]);
+							highestPriority = Math.max(highestPriority, priority[n] == 4 && m.getType() == type ? 5 : priority[n]);
 						}
 					}
 				}
@@ -130,12 +130,12 @@ package kalakuh.ttt
 			}
 			// change these values to balance AI's aggresivity
 			if (!dirPoints[x + "|" + y]) {
-				dirPoints[x + "|" + y] = type == playerType ? 2 : 1;
+				dirPoints[x + "|" + y] = type == playerType ? 3 : 5;
 			} else {
-				dirPoints[x + "|" + y] += type == playerType ? 2 : 1;
+				dirPoints[x + "|" + y] += type == playerType ? 3 : 5;
 			}
 			// add some value to the cell based on the distance
-			dirPoints[x + "|" + y] += (5 - iter) * (type != playerType ? 4 : 1);
+			dirPoints[x + "|" + y] += (4 - iter) * (type == playerType ? 2 : 4);
 			return 2;
 		}
 	}
